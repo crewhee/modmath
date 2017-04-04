@@ -82,7 +82,14 @@ double montecarlographic(long length, long precision){
     return result;
 }
 
-double precision_squares(long precision){   //1 / step = шаг интегрирования
+/*
+ В функциях для расчета точности тех или иных методов формулы приведены в уже сокращенном виде
+ Дело в том, что максимумы функций четные, длина отрезка интегрирования равна двум и это все 
+ прекрасно сокращается с коэффициентами
+ step = количество точек от 0 до 1 - промежуточная переменная
+ */
+
+double precision_squares(long precision){
     double result;
     double step = precision / 2;
     result = (2 + M_PI)/4*(double(1/step));
