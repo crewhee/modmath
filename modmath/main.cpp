@@ -137,16 +137,6 @@ int main(int argc, const char * argv[]) {
         A[i] = A[i] * atan(A[i]);
     }
     
-    /*
-    printf("Методом правых прямоугольников = %f \n", squares_right(A, length));
-    printf("Методом левых прямоугольников = %f \n", squares_left(A,length));
-    printf("Методом центральных прямоугольников = %f \n", squares(A, length));
-    printf("Методом трапеций = %f \n", trap(A, length));
-    printf("Методом Симпсона = %f \n", simpson(A, length));
-    printf("Методом Монте-Карло = %f \n", montecarlo(A, length));
-    printf("Графическим методом Монте-Карло = %f \n", montecarlographic(A, length));
-    */
-    
     printf("Точное аналитическое = %f \n", (M_PI - 2)/2.0);
     printf("%f \n", squares_right(A, length));
     printf("%f \n", squares_left(A,length));
