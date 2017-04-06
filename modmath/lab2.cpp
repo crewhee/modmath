@@ -31,7 +31,7 @@ double runge(double x, double y, double h){
     return result;
 }
 
-void calculate(double h){
+void calculate_lab2(double h){
     double y_0 = 2.0;
     double a_0 = 0.0;
     double b_0 = 0.5;
@@ -60,27 +60,21 @@ void calculate(double h){
         y[i] = runge(x[i], y[i-1], h_0);
     }
     
-    printf("Аналитическое: \n");
+    printf("\nАналитическое: \n");
     for(int i = 0; i < size; i++){
         printf("(%f, %f) \n", x[i], y_a[i]);
     }
     
-    printf("Эйлера: \n");
+    printf("\nЭйлера: \n");
     for(int i = 0; i < size; i++){
-        printf("%f;", y_eiler[i]);
+        printf("(%f, %f) \n", x[i], y_eiler[i]);
     }
     
     printf("\nРунге-Кутты: \n");
     for(int i = 0; i < size; i++){
         printf("(%f, %f) \n", x[i], y[i]);
     }
-    for(int i = 0; i < size; i++){
-        printf("%f\n", x[i]);
-    }
     
-    
-    printf("%f %f \n", eiler(0.5, 2.115304, 0.1), eiler(0.5, 2.171421, 0.05));
-    printf("%f %f \n", runge(0.5, 2.224971, 0.1), runge(0.5, 2.233278, 0.05));
-    
+    printf("Конец программы \n\n");
 }
 
