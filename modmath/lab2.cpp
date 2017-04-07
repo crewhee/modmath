@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <cmath>
+#include <stdio.h>
 #include "lab2.h"
 
 using namespace std;
@@ -45,6 +46,14 @@ void calculate_lab2(double h){
         current += h_0;
     }
     
+    vector<double> x_for_eiler;
+    current = a_0;
+    x_for_eiler.reserve(int(b_0/h_0));
+    for(int i = 0; i < size; i++){
+        x_for_eiler[i] = current;
+        current += 2*h_0;
+    }
+    
     
     vector<double> y, y_a, y_eiler;
     y.reserve(size);
@@ -55,26 +64,38 @@ void calculate_lab2(double h){
     for(int i = 0; i < size; i++){
         y_a[i] = analitics(x[i]);
     }
+    for(int i = 1; i < size / 2; i++){
+        y_eiler[i] = eiler(x_for_eiler[i-1], y_eiler[i-1], h_0);
+    }
     for(int i = 1; i < size; i++){
-        y_eiler[i] = eiler(x[i-1], y_eiler[i-1], h_0);
         y[i] = runge(x[i], y[i-1], h_0);
     }
     
+    
+    /*
     printf("\nАналитическое: \n");
     for(int i = 0; i < size; i++){
-        printf("(%f, %f) \n", x[i], y_a[i]);
+        printf("%f \n", y_a[i]);
     }
     
     printf("\nЭйлера: \n");
-    for(int i = 0; i < size; i++){
-        printf("(%f, %f) \n", x[i], y_eiler[i]);
+    for(int i = 0; i < size/2; i++){
+        printf("%f \n", y_eiler[i]);
     }
     
     printf("\nРунге-Кутты: \n");
     for(int i = 0; i < size; i++){
-        printf("(%f, %f) \n", x[i], y[i]);
+        printf("%f \n", y[i]);
     }
-    
+    */
+    for(int i = 0; i < size; i++){
+        printf("%f \n", x[i]);
+    }
+    printf("x_eiler \n");
+    for(int i = 0; i < size/2; i++){
+        printf("%f \n", x_for_eiler[i]);
+    }
+    printf("%f %f \n", eiler(x_for_eiler[size/2 - 1], y_eiler[size/2 - 1], h_0), runge(0.5, y[size - 1], h_0));
     printf("Конец программы \n\n");
 }
 
